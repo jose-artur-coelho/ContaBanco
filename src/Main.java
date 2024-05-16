@@ -3,29 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
 
+        Conta conta = new Conta();
+
         Scanner scanner = new Scanner(System.in).useLocale(java.util.Locale.US);
 
-        System.out.print("Por favor, digite o número da conta: ");
-        int numConta = scanner.nextInt();
+        conta.adicionaNumero(scanner);
 
-        System.out.print("Por favor, digite a agência: ");
-        String agencia = scanner.next();
+        conta.adicionaAgencia(scanner);
 
-        System.out.print("Por favor, digite seu nome: ");
-        scanner.nextLine();
-        String nome = scanner.nextLine();
+        conta.adicionaNome(scanner);
 
-        System.out.print("Por favor, digite seu saldo inicial: ");
-        double saldo = scanner.nextDouble();
+        conta.adicionaSaldo(scanner);
 
         scanner.close();
 
-        Conta conta = new Conta(numConta, agencia, nome, saldo);
-
-        System.out.println(
-                "\nOlá " + conta.getNomeCliente() + ", obrigado por criar uma conta em nosso banco, sua agência é "
-                        + conta.getAgencia() + ", conta " + conta.getNumero() + " e seu saldo de R$ " + conta.getSaldo()
-                        + " já está disponível para saque\n");
+        System.out.printf(
+                "\nOlá %s, obrigado por criar uma conta em nosso banco, sua agência é %s, conta %d e seu saldo de R$ %.2f já está disponível para saque\n",
+                conta.getNomeCliente(), conta.getAgencia(), conta.getNumero(), conta.getSaldo());
 
     }
 }
